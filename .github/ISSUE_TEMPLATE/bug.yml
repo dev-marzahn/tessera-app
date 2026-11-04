@@ -1,0 +1,52 @@
+# The ids are what Report a bug fills in through the form's URL (?version=…&os=…&device=…); keep them stable.
+name: Bug report
+description: Something in Tessera doesn't work.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Tessera version
+      description: Settings → About.
+      placeholder: 100.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android
+        - macOS
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS version
+      placeholder: Android 16, macOS 26.1
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: Pixel 9, MacBook Air M3
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: >-
+        Settings → Diagnostics → Copy log, pasted here. It holds only request paths, statuses and timings: no
+        searches, post ids or account details.
+      render: text
+  - type: markdown
+    attributes:
+      value: Please don't attach screenshots of adult content.

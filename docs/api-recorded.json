@@ -1,0 +1,902 @@
+{
+    "d1-autocomplete": {
+        "status": 200,
+        "keys": [
+            "[]"
+        ],
+        "marker": "results>0: yes, tagName=yes"
+    },
+    "d1-book-pages": {
+        "status": 200,
+        "keys": [
+            "artist_tags",
+            "author",
+            "child_pools",
+            "comment_count",
+            "cover_post",
+            "cover_post_id",
+            "created_at",
+            "description",
+            "description_en",
+            "description_ja",
+            "fav_count",
+            "file_url",
+            "flagged_by_user",
+            "genre_tags",
+            "has_children",
+            "id",
+            "is_active",
+            "is_anonymous",
+            "is_deleted",
+            "is_favorited",
+            "is_flagged",
+            "is_intact",
+            "is_pending",
+            "is_premium",
+            "is_public",
+            "is_rating_locked",
+            "is_raw",
+            "is_trial",
+            "locale",
+            "name",
+            "name_en",
+            "name_ja",
+            "pages_count",
+            "parent_id",
+            "parent_pool",
+            "post_count",
+            "post_tags",
+            "posts",
+            "prem_post_count",
+            "preview_url",
+            "rating",
+            "reactions",
+            "reading",
+            "redirect_to_signup",
+            "sample_url",
+            "status",
+            "tags",
+            "total_score",
+            "updated_at",
+            "user_vote",
+            "visible_post_count",
+            "vote_count"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d1-books-list": {
+        "status": 200,
+        "keys": [
+            "page",
+            "pools",
+            "series"
+        ],
+        "marker": "pools>0: yes"
+    },
+    "d1-multi-id-comma": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts=2"
+    },
+    "d1-multi-id-space": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts=2"
+    },
+    "d1-opened-tag": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, same as tag first: yes"
+    },
+    "d1-popular": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes"
+    },
+    "d1-posts-fu": {
+        "status": 200,
+        "keys": [
+            "data",
+            "success"
+        ],
+        "marker": "file_url=yes, sample_url=yes"
+    },
+    "d1-rating-exclude": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, rating q: no"
+    },
+    "d1-recommended": {
+        "status": 200,
+        "keys": [
+            "[]"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d1-tag-limit": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts=1"
+    },
+    "d1-top": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes"
+    },
+    "d10-tags-keyset-id": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "full=no, type+post_count=yes, file_url=yes"
+    },
+    "d10-tags-posts-id": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "file_url",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_url",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "full=yes, type+post_count=yes, file_url=yes"
+    },
+    "d10-tags-posts-id-plain": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "file_url",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_url",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "full=yes, type+post_count=yes, file_url=yes"
+    },
+    "d10-tags-posts-id-v2": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "full=yes, type+post_count=yes, file_url=no"
+    },
+    "d10-tags-v2-posts-id": {
+        "status": 200,
+        "keys": [],
+        "marker": "post=no"
+    },
+    "d11-follow-unfollow": {
+        "status": 200,
+        "keys": [
+            "success"
+        ],
+        "marker": "follow=200 success=true, unfollow success=true"
+    },
+    "d11-list-users-followings": {
+        "status": 400,
+        "keys": [
+            "code",
+            "errorId",
+            "errors",
+            "success"
+        ]
+    },
+    "d11-tags-is-following": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "file_url",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_url",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "is_following on every tag=yes"
+    },
+    "d12-user-vote": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "file_url",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_url",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "user_vote present=yes"
+    },
+    "d12-vote-unvote": {
+        "status": 200,
+        "keys": [
+            "post_id",
+            "score",
+            "success",
+            "vote_count"
+        ],
+        "marker": "vote=200 success=true, user_vote after=4, unvote success=true"
+    },
+    "d13-following": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, file_url=yes, next=yes"
+    },
+    "d13-following-anonymous": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, file_url=yes, next=yes"
+    },
+    "d13-for-you": {
+        "status": 200,
+        "keys": [
+            "api_call_id",
+            "assigned_variant",
+            "data",
+            "experiment_arm",
+            "experiment_enrolled",
+            "experiment_id",
+            "meta",
+            "method",
+            "model_version",
+            "variant"
+        ],
+        "marker": "posts>0: yes, file_url=yes, next=yes"
+    },
+    "d13-for-you-anonymous": {
+        "status": 200,
+        "keys": [
+            "api_call_id",
+            "assigned_variant",
+            "data",
+            "experiment_arm",
+            "experiment_enrolled",
+            "experiment_id",
+            "meta",
+            "method",
+            "model_version",
+            "variant"
+        ],
+        "marker": "posts>0: yes, file_url=yes, next=yes"
+    },
+    "d13-for-you-capabilities": {
+        "status": 200,
+        "keys": [
+            "api_call_id",
+            "assigned_variant",
+            "data",
+            "experiment_arm",
+            "experiment_enrolled",
+            "experiment_id",
+            "meta",
+            "method",
+            "model_version",
+            "variant"
+        ],
+        "marker": "posts>0: yes, file_url=yes, next=yes"
+    },
+    "d13-for-you-paging": {
+        "status": 200,
+        "keys": [
+            "api_call_id",
+            "assigned_variant",
+            "data",
+            "experiment_arm",
+            "experiment_enrolled",
+            "experiment_id",
+            "meta",
+            "method",
+            "model_version",
+            "variant"
+        ],
+        "marker": "by next alone: page 1 again=yes, same next=yes; with page=2: new posts=yes"
+    },
+    "d14-animated": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, file_type=[image/gif], file_ext=[gif], sample=gif"
+    },
+    "d14-video": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, file_type=[video/mp4], file_ext=[mp4], sample=mp4"
+    },
+    "d14-video-player-fetch": {
+        "status": 206,
+        "keys": [],
+        "marker": "status=206 content-type=video/mp4"
+    },
+    "d15-animated-duration": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "video_duration>0: all, null or 0: none, same as duration: all"
+    },
+    "d15-image-duration": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "video_duration>0: none, null or 0: all, same as duration: all"
+    },
+    "d15-video-duration": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "video_duration>0: all, null or 0: none, same as duration: all"
+    },
+    "d16-following-order": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, created_at nearly newest first: yes, no post twice: yes, plain list the same: yes"
+    },
+    "d17-cursor-other-query": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "plain list continues from the cursor's time: yes"
+    },
+    "d17-cursor-shape": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "encoding=base64url, bytes=24, readable text=no, JSON=no, holds a page id=no"
+    },
+    "d17-cursor-tamper": {
+        "status": 400,
+        "keys": [
+            "code",
+            "errorId",
+            "success"
+        ],
+        "marker": "same cursor twice: same page=yes, changed characters rejected: yes, made-up cursor: 400 invalid-parameters, empty cursor: first page=yes"
+    },
+    "d18-age": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ]
+    },
+    "d18-date-range-artist": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "post found: yes, inside the range: yes"
+    },
+    "d18-date-range-following": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "anchor found in its hour's range: yes, nothing outside [start, end): yes"
+    },
+    "d18-date-range-paging": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "page 2 is older than page 1 and inside the range: yes"
+    },
+    "d18-id-less-or-equal": {
+        "status": 500,
+        "keys": [
+            "code",
+            "errorId",
+            "message"
+        ],
+        "marker": "status 500, code=server-error__sankaku-error"
+    },
+    "d18-id-less-than": {
+        "status": 500,
+        "keys": [
+            "code",
+            "errorId",
+            "message"
+        ],
+        "marker": "status 500, code=server-error__sankaku-error"
+    },
+    "d18-id-less-than-artist": {
+        "status": 500,
+        "keys": [
+            "code",
+            "errorId",
+            "message"
+        ],
+        "marker": "status 500, code=server-error__sankaku-error"
+    },
+    "d18-id-range": {
+        "status": 408,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ],
+        "marker": "status 408, code=snackbar__account_search-invalid-structure"
+    },
+    "d18-id-range-artist": {
+        "status": 408,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ],
+        "marker": "status 408, code=snackbar__account_search-invalid-structure"
+    },
+    "d2-posts-id": {
+        "status": 200,
+        "keys": [
+            "audios",
+            "author",
+            "change",
+            "comment_count",
+            "created_at",
+            "derived_from_post_id",
+            "duration",
+            "fav_count",
+            "file_ext",
+            "file_size",
+            "file_type",
+            "file_url",
+            "generation_directives",
+            "gif_preview_url",
+            "has_ai_derivatives",
+            "has_children",
+            "has_comments",
+            "has_notes",
+            "height",
+            "id",
+            "in_visible_pool",
+            "is_anonymous",
+            "is_favorited",
+            "is_note_locked",
+            "is_premium",
+            "is_rating_locked",
+            "is_restricted_anonymous_upload",
+            "is_status_locked",
+            "md5",
+            "parent_id",
+            "preview_height",
+            "preview_url",
+            "preview_width",
+            "rating",
+            "reactions",
+            "redirect_to_signup",
+            "review_score",
+            "sample_height",
+            "sample_url",
+            "sample_width",
+            "sequence",
+            "source",
+            "status",
+            "subtitles",
+            "tag_names",
+            "tags",
+            "total_score",
+            "total_tags",
+            "user_vote",
+            "video_duration",
+            "vote_count",
+            "width"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d3-malformed-keyset": {
+        "status": 401,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ]
+    },
+    "d3-malformed-users-me": {
+        "status": 401,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ]
+    },
+    "d4-favourites": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d4-favourites-age": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts=0"
+    },
+    "d4-favourites-hide": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, all favourited: no, any favourited: no"
+    },
+    "d4-favourites-hide-tag": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, all favourited: no, any favourited: no"
+    },
+    "d4-favourites-only": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "posts>0: yes, all favourited: yes, any favourited: yes"
+    },
+    "d4-favourites-paged": {
+        "status": 200,
+        "keys": [
+            "[]"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d4-favourites-rating": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "file_url=yes"
+    },
+    "d5-favourite": {
+        "status": 200,
+        "keys": [
+            "favorited_users",
+            "post_id",
+            "score",
+            "success"
+        ],
+        "marker": "success=true"
+    },
+    "d5-unfavourite": {
+        "status": 200,
+        "keys": [
+            "favorited_users",
+            "post_id",
+            "score",
+            "success"
+        ],
+        "marker": "success=true"
+    },
+    "d6-refresh-made-up": {
+        "status": 401,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ],
+        "marker": "success=false, code=\"snackbar__common_unauthorized\", error=\"snackbar__common_unauthorized\""
+    },
+    "d6-refresh-rotated": {
+        "status": 401,
+        "keys": [
+            "code",
+            "error",
+            "errorId",
+            "success"
+        ],
+        "marker": "success=false, code=\"snackbar__common_unauthorized\", error=\"snackbar__common_unauthorized\""
+    },
+    "d7-expired-v": {
+        "status": 403,
+        "keys": [],
+        "marker": "finalUrlSigned=yes"
+    },
+    "d8-wrong-password": {
+        "status": 403,
+        "keys": [
+            "error",
+            "success"
+        ],
+        "marker": "success=false, error=\"invalid login or password\""
+    },
+    "d9-rate-limit-headers": {
+        "status": 200,
+        "keys": [
+            "data",
+            "meta"
+        ],
+        "marker": "headers=browsing-limit-book,browsing-limit-book-android-native,browsing-limit-book-android-native-r15+-r18+,browsing-limit-book-explicit,browsing-limit-book-ios-native,browsing-limit-book-ios-native-r15+-r18+,browsing-limit-book-web-app,browsing-limit-book-web-app-r15+-r18+,browsing-limit-post,browsing-limit-post-android-native,browsing-limit-post-android-native-r15+-r18+,browsing-limit-post-explicit,browsing-limit-post-ios-native,browsing-limit-post-ios-native-r15+-r18+,browsing-limit-post-web-app,browsing-limit-post-web-app-r15+-r18+,browsing-limit-series,browsing-limit-series-android-native,browsing-limit-series-android-native-r15+-r18+,browsing-limit-series-explicit,browsing-limit-series-ios-native,browsing-limit-series-ios-native-r15+-r18+,browsing-limit-series-web-app,browsing-limit-series-web-app-r15+-r18+"
+    }
+}
