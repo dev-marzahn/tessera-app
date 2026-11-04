@@ -1,0 +1,68 @@
+# git-cliff (https://git-cliff.org) drafts a version's CHANGELOG.md section from the conventional commits since the
+# last tag. The README's release checklist runs it:
+#   git cliff --unreleased --tag v<version> --prepend CHANGELOG.md
+# It keeps the header (the title and the "## Unreleased" heading) at the top and writes the new "## <version>" section
+# under it, above the older ones; anything written under Unreleased ends up at the end of the new section. The public
+# repository's release workflow publishes that section as the release body (.github/release-notes.sh), so the draft is
+# only a start: edit it into what a user wants to read. mirror/changelog.test.sh tests the two together.
+#
+# Only feat and fix commits, without their type, scope and issue or PR numbers, and without the ones about this
+# repository's tooling (the scopes skipped below) or about review rounds. Within each group the items are sorted by
+# scope, so the changes to one part of the app sit together.
+
+[changelog]
+header = """
+# Changelog
+
+What changed in each release of Tessera.
+
+## Unreleased
+"""
+# Not trimmed, so that the header is exactly CHANGELOG.md's first lines, ending at "## Unreleased" and its newline:
+# --prepend writes the header, the new section and then the file without its header, and only finds the header when it
+# matches exactly. git-cliff puts a newline between the header and the section, and the file's older sections start
+# with that blank line, so the section itself ends with only its last line's newline.
+# The first release (no earlier tag) lists only what's added: its fixes are to things never released.
+body = """
+## {% if version %}{{ version | trim_start_matches(pat="v") }} - {{ now() | date(format="%Y-%m-%d") }}{% else %}Unreleased{% endif %}
+{%- for group, commits in commits | group_by(attribute="group") %}
+{%- if group is ending_with("Fixed") and not previous.version %}{% continue %}{% endif %}
+
+### {{ group | striptags | trim }}
+{% for commit in commits | sort(attribute="scope") %}
+- {{ commit.message | split(pat="\n") | first | trim | upper_first }}
+{%- endfor %}
+{%- endfor %}
+"""
+footer = ""
+trim = false
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+split_commits = false
+protect_breaking_commits = false
+filter_commits = true
+# Only these tags mark a release; the private repository's tags are the ones mirrored.
+tag_pattern = "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+topo_order = false
+sort_commits = "oldest"
+
+# Run on the whole message before it's parsed. No issue or PR numbers: "(#202)", "(#207, #358)", "(#334 review)", a
+# .scratch/ ticket's "(02)" or "(10, 11)", also mid-sentence (tickets are always two digits, so "rating (1)" stays),
+# and any other "#123". No trailing "; review fixes" on the subject line.
+commit_preprocessors = [
+  { pattern = '[ \t]*\([^)\n]*#[0-9]+[^)\n]*\)', replace = "" },
+  { pattern = '[ \t]*\([0-9]{2}(,[ \t]*[0-9]{2})*\)', replace = "" },
+  { pattern = '[ \t]*#[0-9]+', replace = "" },
+  { pattern = '(?m)[;,][ \t]*review (fixes|findings?|nits|cleanups|round [0-9]+)[ \t]*$', replace = "" },
+]
+
+# The first matching parser wins. The <!-- n --> prefix only orders the groups; the template strips it.
+commit_parsers = [
+  { message = '^(feat|fix)(\([^)]*\))?!?:\s*(?i:review)\b', skip = true },
+  { field = "scope", pattern = '^(ci|runner|scripts|agents|cli|mirror|auto-merge|m1)$', skip = true },
+  { message = '^feat', group = "<!-- 0 -->Added", default_scope = "" },
+  { message = '^fix', group = "<!-- 1 -->Fixed", default_scope = "" },
+  { message = '.*', skip = true },
+]
