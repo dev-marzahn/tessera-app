@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The system splash screen (Android 12+, so every supported version): the icon's glyph on its own graphite. -->
+    <style name="Theme.Tessera" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowSplashScreenBackground">@color/graphite</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+    </style>
+
+    <!-- The dark end of ic_launcher_background's gradient. -->
+    <color name="graphite">#FF1E1B19</color>
+</resources>
