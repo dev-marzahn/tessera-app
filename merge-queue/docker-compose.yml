@@ -1,0 +1,91 @@
+# gitea-mq, the merge queue (https://github.com/Mic92/gitea-mq), and its database, deployed with Coolify as one
+# resource. See README.md. Every value in ${…} is set in the resource's Environment Variables, never here.
+
+services:
+  gitea-mq:
+    # Pinned by tag and digest. To update, see README.md.
+    image: ghcr.io/mic92/gitea-mq:v0.2.0@sha256:e80decac8cba55c9d8b32827af1dc0a26cebbf57a75f4eab03e91fbec3fd8f62
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      key:
+        condition: service_completed_successfully
+    # Nothing is published on the host: Coolify's Traefik routes the domain set on this service in Coolify's UI to
+    # port 8080. The dashboard has no login and lists PR titles, so these routers, ahead of Coolify's, answer every
+    # other path on the domain with Traefik's empty noop service (418): only the webhook and the health check reach
+    # gitea-mq. One per entrypoint: a Cloudflare tunnel reaches Traefik over plain http.
+    # The domain is written out, not a variable: Coolify escapes $ in labels by default, so ${…} would stay literal and
+    # the routers would never match. It has to be the domain set in Coolify.
+    expose:
+      - "8080"
+    labels:
+      - traefik.http.routers.sankaku-mq-private.rule=Host(`gitea-mq.apps.marzahn.co.uk`) && !PathPrefix(`/webhook/`) && !Path(`/healthz`)
+      - traefik.http.routers.sankaku-mq-private.priority=10000
+      - traefik.http.routers.sankaku-mq-private.entrypoints=https
+      - traefik.http.routers.sankaku-mq-private.tls=true
+      - traefik.http.routers.sankaku-mq-private.service=noop@internal
+      - traefik.http.routers.sankaku-mq-private-http.rule=Host(`gitea-mq.apps.marzahn.co.uk`) && !PathPrefix(`/webhook/`) && !Path(`/healthz`)
+      - traefik.http.routers.sankaku-mq-private-http.priority=10000
+      - traefik.http.routers.sankaku-mq-private-http.entrypoints=http
+      - traefik.http.routers.sankaku-mq-private-http.service=noop@internal
+    environment:
+      GITEA_MQ_DATABASE_URL: postgres://gitea-mq:${GITEA_MQ_DB_PASSWORD:?}@db/gitea-mq?sslmode=disable
+      # https://<domain>: GitHub delivers the App's webhooks to <url>/webhook/github. The gitea-mq check links to the
+      # dashboard there, which answers 418 from outside.
+      GITEA_MQ_EXTERNAL_URL: ${GITEA_MQ_EXTERNAL_URL:?}
+      GITEA_MQ_GITHUB_APP_ID: ${GITEA_MQ_GITHUB_APP_ID:?}
+      # Written by the key service below.
+      GITEA_MQ_GITHUB_PRIVATE_KEY_FILE: /run/gitea-mq/github-app.pem
+      # gitea-mq writes it into the App's webhook settings on startup, so it lives only here.
+      GITEA_MQ_GITHUB_WEBHOOK_SECRET: ${GITEA_MQ_GITHUB_WEBHOOK_SECRET:?}
+      # Only a fallback: gitea-mq takes the required checks from main's rulesets first (build, claude-review and
+      # human-review), so .github/workflows/merge-queue.yml reports the two reviews on the temporary branch.
+      GITEA_MQ_REQUIRED_CHECKS: build
+      # One PR at a time, merged through GitHub's merge API like a button press, so main's ruleset applies. A batch
+      # would be fast-forwarded onto main by gitea-mq itself, which needs it to bypass main's ruleset.
+      GITEA_MQ_BATCH_MAX: "1"
+      # The label that queues a PR, which auto-merge.yml puts on agent PRs. gitea-mq merges a labelled PR itself as soon
+      # as it passes. A PR queued through GitHub's auto-merge instead waits for GitHub, which can take minutes, holds up
+      # the queue meanwhile, and is dropped after 5.
+      GITEA_MQ_MERGE_LABEL: merge-queue
+    volumes:
+      # Bare clones of the repo, used for merges.
+      - cache:/var/cache/gitea-mq
+      - key:/run/gitea-mq:ro
+
+  # Writes the App's private key to a file for gitea-mq, then exits. Coolify writes a compose resource's variables into
+  # a .env file, which keeps only the first line of a multiline value, so the PEM arrives as one line of base64. The
+  # gitea-mq image has no shell to decode it with.
+  key:
+    image: alpine:3.24.4@sha256:93b41ef40b1677fce8fcc64ff4af09daddfacf5040afde618bc46c1e2d1cc7d4
+    restart: "no"
+    environment:
+      KEY_BASE64: ${GITEA_MQ_GITHUB_PRIVATE_KEY_BASE64:?}
+    command: ["sh", "-c", "umask 077 && printf %s \"$$KEY_BASE64\" | base64 -d > /run/gitea-mq/github-app.pem"]
+    volumes:
+      - key:/run/gitea-mq
+    labels:
+      # A one-shot container: Coolify would otherwise report the resource as unhealthy once it exits.
+      - exclude_from_hc=true
+
+  db:
+    image: postgres:18.6-alpine@sha256:123b17998ccaf47e53b502e8c6a1e79afd8f579c6f3eec83c563da026f957395
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gitea-mq
+      POSTGRES_DB: gitea-mq
+      POSTGRES_PASSWORD: ${GITEA_MQ_DB_PASSWORD:?}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "gitea-mq", "-d", "gitea-mq"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      # PostgreSQL 18's images keep the data under a versioned folder inside this one.
+      - db:/var/lib/postgresql
+
+volumes:
+  db:
+  cache:
+  key:

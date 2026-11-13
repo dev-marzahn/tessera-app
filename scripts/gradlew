@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Runs ./gradlew once a build slot is free. Every agent on the owner's Mac builds through it, so at most a few Gradle
+# builds run at once across all worktrees and the rest wait their turn: ten at once ran the Mac out of memory.
+#   scripts/gradlew :sharedUI:jvmTest --tests '*QueuePageBehaviourTest'
+# GRADLE_SLOTS sets how many builds may run at once (default 3). A slot is a lock file under ~/.gradle/build-slots;
+# the lock goes with the build's process, so a build that crashes or is killed frees its slot by itself.
+set -euo pipefail
+
+root=$(cd "$(dirname "$0")/.." && pwd)
+slots=${GRADLE_SLOTS:-3}
+[[ "$slots" =~ ^[1-9][0-9]*$ ]] || { echo "scripts/gradlew: GRADLE_SLOTS must be a whole number from 1 up, not '$slots'." >&2; exit 2; }
+dir="$HOME/.gradle/build-slots"
+mkdir -p "$dir"
+
+waited=0
+while :; do
+  for ((i = 1; i <= slots; i++)); do
+    exec 9>>"$dir/slot-$i"
+    if lockf -s -t 0 9; then
+      [ "$waited" = 0 ] || echo "scripts/gradlew: got build slot $i after ${waited}s." >&2
+      # The Gradle client keeps fd 9, and with it the slot, until the build ends.
+      exec "$root/gradlew" "$@"
+    fi
+    exec 9>&-
+  done
+  [ "$waited" = 0 ] && echo "scripts/gradlew: all $slots build slots are taken by other builds; waiting for one." >&2
+  sleep 5
+  waited=$((waited + 5))
+done

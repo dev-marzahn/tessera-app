@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- .scratch/app-icon/final-foreground.svg: three 22-unit paper tiles (radius 6) and an amber rounded square, open at
+     its top-right corner, in the top-right cell. Everything stays inside the 66 dp safe circle. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="108dp"
+        android:height="108dp"
+        android:viewportWidth="108"
+        android:viewportHeight="108">
+    <path
+            android:fillColor="#FFF3EDE8"
+            android:pathData="M36,30H46A6,6 0,0 1,52 36V46A6,6 0,0 1,46 52H36A6,6 0,0 1,30 46V36A6,6 0,0 1,36 30Z" />
+    <path
+            android:fillColor="#FFF3EDE8"
+            android:pathData="M36,56H46A6,6 0,0 1,52 62V72A6,6 0,0 1,46 78H36A6,6 0,0 1,30 72V62A6,6 0,0 1,36 56Z" />
+    <path
+            android:fillColor="#FFF3EDE8"
+            android:pathData="M62,56H72A6,6 0,0 1,78 62V72A6,6 0,0 1,72 78H62A6,6 0,0 1,56 72V62A6,6 0,0 1,62 56Z" />
+    <path
+            android:strokeColor="#FFF59E0B"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M75.5,38V46A3.5,3.5 0,0 1,72 49.5H62A3.5,3.5 0,0 1,58.5 46V36A3.5,3.5 0,0 1,62 32.5H70" />
+</vector>
